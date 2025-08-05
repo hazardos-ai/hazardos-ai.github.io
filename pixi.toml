@@ -1,0 +1,13 @@
+[workspace]
+authors = ["Don Setiawan <landungs@uw.edu>"]
+channels = ["conda-forge"]
+name = "hazardos-ai.github.io"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+dev = { cmd = "npm run dev", cwd = "site" }
+npm = { cmd = "npm", cwd = "site" }
+
+[dependencies]
+nodejs = ">=24.4.1,<24.5"
