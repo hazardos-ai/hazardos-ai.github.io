@@ -1,0 +1,53 @@
+---
+export interface Props {
+  id?: string;
+  formUrl: string;
+  height?: string;
+  title?: string;
+  subtitle?: string;
+  classes?: Record<string, string>;
+}
+
+const {
+  id = 'formbricks-embed',
+  formUrl,
+  height = '80dvh',
+  title,
+  subtitle,
+  classes = {},
+} = Astro.props;
+
+const {
+  container: containerClass = '',
+  title: titleClass = '',
+  subtitle: subtitleClass = '',
+  iframe: iframeClass = '',
+} = classes;
+---
+
+<section class={`py-16 md:py-20 ${containerClass}`} id={id}>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    {title && (
+      <div class="mb-8 text-center">
+        <h2 class={`text-3xl font-bold tracking-tight sm:text-4xl ${titleClass}`}>
+          {title}
+        </h2>
+        {subtitle && (
+          <p class={`mt-4 text-lg text-muted ${subtitleClass}`}>
+            {subtitle}
+          </p>
+        )}
+      </div>
+    )}
+    
+    <div class={`relative overflow-auto rounded-lg shadow-lg ${iframeClass}`} style={`height: ${height}`}>
+      <iframe 
+        src={formUrl}
+        frameborder="0" 
+        style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; border: 0;"
+        title="FormBricks Survey"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>

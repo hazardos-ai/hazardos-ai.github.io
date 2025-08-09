@@ -1,0 +1,38 @@
+---
+// FormBricks provider equivalent for Astro
+// This component initializes FormBricks and handles route changes
+---
+
+<script>
+  import formbricks from "@formbricks/js";
+
+  // Initialize FormBricks when the component loads
+  function initializeFormBricks() {
+    if (typeof window !== "undefined") {
+      formbricks.setup({
+        environmentId: "<environment-id>", // Replace with your actual environment ID
+        appUrl: "<app-url>", // Replace with your actual app URL
+      });
+    }
+  }
+
+  // Handle route changes for Astro's client-side navigation
+  function handleRouteChange() {
+    if (typeof formbricks !== "undefined" && formbricks.registerRouteChange) {
+      formbricks.registerRouteChange();
+    }
+  }
+
+  // Initialize on load
+  initializeFormBricks();
+
+  // Listen for Astro's navigation events
+  document.addEventListener("astro:page-load", handleRouteChange);
+  document.addEventListener("astro:after-swap", handleRouteChange);
+
+  // Cleanup event listeners when component is destroyed
+  document.addEventListener("astro:before-preparation", () => {
+    document.removeEventListener("astro:page-load", handleRouteChange);
+    document.removeEventListener("astro:after-swap", handleRouteChange);
+  });
+</script>

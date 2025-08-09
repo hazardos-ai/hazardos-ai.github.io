@@ -11,6 +11,7 @@ export type Config = {
   };
   ui?: unknown;
   analytics?: unknown;
+  formbricks?: FormbricksConfig;
 };
 
 export interface SiteConfig {
@@ -76,6 +77,12 @@ export interface AnalyticsConfig {
       partytown?: boolean;
     };
   };
+}
+
+export interface FormbricksConfig {
+  environmentId?: string;
+  appUrl?: string;
+  debug?: boolean;
 }
 
 export interface UIConfig {
@@ -193,6 +200,16 @@ const getAnalytics = (config: Config) => {
   return merge({}, _default, config?.analytics ?? {}) as AnalyticsConfig;
 };
 
+const getFormbricks = (config: Config) => {
+  const _default = {
+    environmentId: undefined,
+    appUrl: undefined,
+    debug: false,
+  };
+
+  return merge({}, _default, config?.formbricks ?? {}) as FormbricksConfig;
+};
+
 export default (config: Config) => ({
   SITE: getSite(config),
   I18N: getI18N(config),
@@ -200,4 +217,5 @@ export default (config: Config) => ({
   APP_BLOG: getAppBlog(config),
   UI: getUI(config),
   ANALYTICS: getAnalytics(config),
+  FORMBRICKS: getFormbricks(config),
 });

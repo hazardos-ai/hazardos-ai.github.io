@@ -68,5 +68,10 @@ analytics:
     googleAnalytics:
       id: null # or "G-XXXXXXXXXX"
 
+formbricks:
+  environmentId: ""
+  appUrl: "https://app.formbricks.com"
+  debug: true
+
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"

@@ -6,8 +6,9 @@ platforms = ["osx-arm64"]
 version = "0.1.0"
 
 [tasks]
-dev = { cmd = "npm run dev", cwd = "site" }
+dev = { cmd = "npm run dev", cwd = "site", depends-on = ["install"] }
 npm = { cmd = "npm", cwd = "site" }
+install = { cmd = "npm install", cwd = "site" }
 
 [dependencies]
 nodejs = ">=24.4.1,<24.5"

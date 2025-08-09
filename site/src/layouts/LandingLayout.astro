@@ -3,7 +3,18 @@ import PageLayout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 
 import { headerData } from '~/navigation';
+import { FORMBRICKS } from 'astrowind:config';
 import type { MetaData } from '~/types';
+
+
+import formbricks from "@formbricks/js";
+
+if (typeof window !== "undefined" && FORMBRICKS.environmentId) {
+  formbricks.setup({
+    environmentId: FORMBRICKS.environmentId, 
+    appUrl: FORMBRICKS.debug ? `${FORMBRICKS.appUrl}?formbricksDebug=true` : FORMBRICKS.appUrl,
+  });
+}
 
 export interface Props {
   metadata?: MetaData;

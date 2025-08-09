@@ -3,6 +3,7 @@ import Layout from '~/layouts/LandingLayout.astro';
 
 import Hero2 from '~/components/widgets/Hero2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import FormBricksEmbed from '~/components/widgets/FormBricksEmbed.astro';
 
 const logo = '~/assets/images/hazardos-logo.png';
 
@@ -17,13 +18,22 @@ const metadata = {
   <Hero2
     tagline="Coming Soon ..."
     title="Your Smart Hazard Analyst for the Modern World"
-    subtitle="AI-powered EHS: hazard detection, safety program automation, and real-time compliance."
+    subtitle="AI-powered EHS: hazard detection, safety and health program automation, and real-time compliance."
     actions={[
-      { variant: 'primary', text: 'Get an early invitation', href: '#', icon: 'tabler:square-rounded-arrow-right' }
+      { variant: 'primary', text: 'Get an early invitation', href: '#early-invitation', icon: 'tabler:square-rounded-arrow-right' }
     ]}
     image={{
       src: logo,
       alt: 'hazardOS logo featuring a white geometric hexagonal design with the letter "H" integrated into an isometric cube structure on a blue-to-purple gradient background',
     }}
+  />
+
+  <!-- FormBricks Survey Widget ******************* -->
+  <FormBricksEmbed
+    id="early-invitation"
+    formUrl="https://app.formbricks.com/s/cmdy45mlb265gw0012154i70r?embed=true"
+    title="Get Your Early Invitation"
+    subtitle="Be among the first to experience the future of AI-powered hazard detection and safety management."
+    height="80dvh"
   />
 </Layout>
