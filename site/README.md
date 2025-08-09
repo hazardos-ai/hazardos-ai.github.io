@@ -234,9 +234,46 @@ analytics:
     googleAnalytics:
       id: null # or "G-XXXXXXXXXX"
 
+formbricks:
+  environmentId: "" # Your Formbricks environment ID
+  appUrl: "https://app.formbricks.com" # Your Formbricks app URL
+  debug: true # Enable debug mode (adds ?formbricksDebug=true to appUrl)
+
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 ```
+
+<br>
+
+#### Formbricks Integration
+
+This template includes built-in support for [Formbricks](https://formbricks.com), an open-source experience management platform. Formbricks allows you to collect user feedback through surveys and forms.
+
+**Configuration:**
+
+The Formbricks integration is configured in the `formbricks` section of your `config.yaml`:
+
+```yaml
+formbricks:
+  environmentId: "" # Your Formbricks environment ID (required)
+  appUrl: "https://app.formbricks.com" # Your Formbricks app URL
+  debug: true # Enable debug mode for development
+```
+
+**Setup Instructions:**
+
+1. Sign up for a Formbricks account at [formbricks.com](https://formbricks.com)
+2. Create a new environment in your Formbricks dashboard
+3. Copy your environment ID and paste it into the `environmentId` field
+4. If using a self-hosted Formbricks instance, update the `appUrl` to your instance URL
+5. Set `debug: false` for production deployments
+
+**Features:**
+
+- Automatically initializes Formbricks on all pages using `LandingLayout`
+- Debug mode adds `?formbricksDebug=true` to help with development
+- Only loads when `environmentId` is provided (graceful degradation)
+- Fully configurable through the central config system
 
 <br>
 
